@@ -24,7 +24,7 @@ router.get("/", authorization, async (req, res) => {
 router.post("/todos", authorization, async(req, res) => {
   try {
       const { description, date } = req.body;
-      console.log(req.user);
+      // console.log(req.user);
       const newToDo = await pool.query("INSERT INTO todo (user_id, description, date) VALUES($1, $2, $3) RETURNING *",
       [req.user.id, description, date]
       );
@@ -46,7 +46,7 @@ router.put("/todos/:id", authorization, async(req, res) => {
       if (updateTodo.rows.length === 0) {
         return res.json("This todo is not yours!")
       }
-      
+
       res.json("Todo was updated!");
   } catch (err) {
       console.log(err.message);
