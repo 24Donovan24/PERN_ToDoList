@@ -1,13 +1,17 @@
-CREATE DATABASE jwttutorial;
+CREATE DATABASE perntodo;
 
 --set extension
 CREATE TABLE users(
     user_id uuid PRIMARY KEY DEFAULT
     uuid_generate_v4(),
     user_name VARCHAR(255) NOT NULL,
-    user_email VARCHAR(255) NOT NULL,
+    user_email VARCHAR(255) NOT NULL UNIQUE,
     user_password VARCHAR(255) NOT NULL
 );
 
---insert fake users
-INSERT INTO users (user_name, user_email, user_password) VALUES ('donovan', 'donovan123@email.com', 'donovan');
+CREATE TABLE todo(
+    todo_id SERIAL PRIMARY KEY,
+    description VARCHAR(255) NOT NULL,
+    date VARCHAR(255),
+    FOREIGN KEY(user_id) REFERENCES users(user_id)
+);
