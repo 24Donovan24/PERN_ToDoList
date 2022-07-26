@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 const Dashboard = ({ setAuth }) => {
   const [name, setName] = useState("");
