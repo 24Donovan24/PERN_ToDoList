@@ -12,10 +12,12 @@ import {
 } from "react-router-dom";
 
 //Components
-import Dashboard from "./components/Dashboard";
+import Dashboard from "./components/dashboard/Dashboard";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Landing from "./components/Landing";
 import { ToastContainer } from "react-toastify";
+
 
 function App() {
 
@@ -51,6 +53,7 @@ function App() {
     <Router>
       <div className="container">
         <Routes>
+          <Route exact path="/" element={!isAuthenticated ? <Landing setAuth={setAuth} /> : <Navigate to="/dashboard" replace />} />
           <Route exact path="/login" element={!isAuthenticated ? <Login setAuth={setAuth} /> : <Navigate to="/dashboard" replace />} />
           <Route exact path="/register" element={!isAuthenticated ? <Register setAuth={setAuth} /> : <Navigate to="/login" replace />} />
           <Route exact path="/dashboard" element={isAuthenticated ? <Dashboard setAuth={setAuth} /> : <Navigate to="/login" replace />} />
