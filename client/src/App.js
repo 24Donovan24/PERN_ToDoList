@@ -16,6 +16,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Landing from "./components/Landing";
+import Settings from "./components/Settings";
 import { ToastContainer } from "react-toastify";
 
 
@@ -45,7 +46,7 @@ function App() {
 
   useEffect(() => {
     isAuth();
-  })
+  });
 
   return (
   <Fragment>
@@ -57,6 +58,7 @@ function App() {
           <Route exact path="/login" element={!isAuthenticated ? <Login setAuth={setAuth} /> : <Navigate to="/dashboard" replace />} />
           <Route exact path="/register" element={!isAuthenticated ? <Register setAuth={setAuth} /> : <Navigate to="/login" replace />} />
           <Route exact path="/dashboard" element={isAuthenticated ? <Dashboard setAuth={setAuth} /> : <Navigate to="/" replace />} />
+          <Route exact path="/settings" element={isAuthenticated ? <Settings setAuth={setAuth} /> : <Navigate to="/settings" replace />} />
         </Routes>
       </div>
     </Router>
