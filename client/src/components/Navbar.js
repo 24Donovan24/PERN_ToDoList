@@ -1,5 +1,6 @@
 import React from "react";
 import { toast } from "react-toastify";
+import "../App.css"
 
 const Navbar = ({ setAuth }) => {
   const logout = (e) => {
@@ -10,7 +11,7 @@ const Navbar = ({ setAuth }) => {
   };
 
   return (
-    <nav class="navbar navbar-expand-lg navbar-light bg-secondary rounded" style={{fontSize: "1.2em"}}>
+    <nav className="navbar navbar-expand-lg navbar-light bg-secondary rounded" style={{fontSize: "1.2em"}}>
       <div className="container-fluid">
         <a className="navbar-brand" href="/" style={{ color: "white", fontSize: "1.5em"}}>
           Todo List
@@ -33,7 +34,7 @@ const Navbar = ({ setAuth }) => {
                 className="nav-link active"
                 style={{ color: "white" }}
                 aria-current="page"
-                href="/"
+                href="/settings"
               >
                 Settings
               </a>
