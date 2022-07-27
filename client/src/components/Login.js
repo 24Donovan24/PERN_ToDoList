@@ -60,7 +60,7 @@ const Login = ({ setAuth }) => {
           value={password}
           onChange={(e) => onChange(e)}
         ></input>
-        <button className="btn btn-success">Submit</button>
+        <button className="btn btn-secondary">Submit</button>
       </form>
       <Link to="/register">Register</Link>
     </Fragment>

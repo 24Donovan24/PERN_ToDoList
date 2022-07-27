@@ -48,7 +48,7 @@ const InputTodo = ({setTodosChange}) => {
           onChange={(e) => setDate(e.target.value)}
           placeholder="Deadline for your To-Do?   eg. DD/MM/YYYY"
         />
-        <button className="btn btn-success">Add</button>
+        <button className="btn btn-dark">Add</button>
       </form>
     </Fragment>
   );

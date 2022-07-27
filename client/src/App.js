@@ -56,7 +56,7 @@ function App() {
           <Route exact path="/" element={!isAuthenticated ? <Landing setAuth={setAuth} /> : <Navigate to="/dashboard" replace />} />
           <Route exact path="/login" element={!isAuthenticated ? <Login setAuth={setAuth} /> : <Navigate to="/dashboard" replace />} />
           <Route exact path="/register" element={!isAuthenticated ? <Register setAuth={setAuth} /> : <Navigate to="/login" replace />} />
-          <Route exact path="/dashboard" element={isAuthenticated ? <Dashboard setAuth={setAuth} /> : <Navigate to="/login" replace />} />
+          <Route exact path="/dashboard" element={isAuthenticated ? <Dashboard setAuth={setAuth} /> : <Navigate to="/" replace />} />
         </Routes>
       </div>
     </Router>

@@ -1,9 +1,10 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 
 //Components
 import InputTodo from "./todolist/InputTodo";
 import ListTodos from "./todolist/ListTodo";
+import Navbar from "../Navbar";
 
 const Dashboard = ({ setAuth }) => {
   const [name, setName] = useState("");
@@ -26,12 +27,12 @@ const Dashboard = ({ setAuth }) => {
     }
   }
 
-  const logout = (e) => {
-    e.preventDefault();
-    localStorage.removeItem("token");
-    setAuth(false);
-    toast.success("Logged out successfully!");
-  };
+  // const logout = (e) => {
+  //   e.preventDefault();
+  //   localStorage.removeItem("token");
+  //   setAuth(false);
+  //   toast.success("Logged out successfully!");
+  // };
 
   useEffect(() => {
     getProfile();
@@ -40,14 +41,15 @@ const Dashboard = ({ setAuth }) => {
 
   return (
     <Fragment>
-      <div className="d-flex mt-5 justify-content-around">
-        <h1>Welcome {name}</h1>
-        <button className="btn btn-primary ms-5" onClick={(e) => logout(e)}>
+      <Navbar setAuth={setAuth} />
+      <div className="d-flex mt-5 justify-content-center">
+        <h1>✨Welcome {name}✨</h1>
+        {/* <button className="btn btn-secondary ms-5" onClick={(e) => logout(e)}>
           Logout
-        </button>
+        </button> */}
       </div>
       <InputTodo setTodosChange={setTodosChange} />
-      <ListTodos allTodos={allTodos} setTodosChange={setTodosChange}/>
+      <ListTodos allTodos={allTodos} setTodosChange={setTodosChange} />
     </Fragment>
   );
 };
