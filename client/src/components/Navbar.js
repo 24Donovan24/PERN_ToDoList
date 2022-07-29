@@ -26,7 +26,7 @@ const Navbar = ({ setAuth }) => {
           href="/"
           style={{ color: "white", fontSize: "1.5em" }}
         >
-          Todo List
+          Todo List 📝
         </a>
         <button
           className="navbar-toggler"
