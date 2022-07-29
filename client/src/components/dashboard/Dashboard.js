@@ -27,13 +27,6 @@ const Dashboard = ({ setAuth }) => {
     }
   }
 
-  // const logout = (e) => {
-  //   e.preventDefault();
-  //   localStorage.removeItem("token");
-  //   setAuth(false);
-  //   toast.success("Logged out successfully!");
-  // };
-
   useEffect(() => {
     getProfile();
     setTodosChange(false);
@@ -44,9 +37,6 @@ const Dashboard = ({ setAuth }) => {
       <Navbar setAuth={setAuth} />
       <div className="d-flex mt-5 justify-content-center">
         <h1>✨Welcome {name}✨</h1>
-        {/* <button className="btn btn-secondary ms-5" onClick={(e) => logout(e)}>
-          Logout
-        </button> */}
       </div>
       <InputTodo setTodosChange={setTodosChange} />
       <ListTodos allTodos={allTodos} setTodosChange={setTodosChange} />
