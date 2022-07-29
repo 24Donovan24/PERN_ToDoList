@@ -12,7 +12,7 @@ router.put("/", authorization, async (req, res) => {
       "SELECT * from users WHERE user_id = $1 AND user_name = $2",
       [req.user.id, newName]
     );
-    if (profile.rows.length == 0) {
+    if (profile.rows.length === 0) {
       //3. Change the name
       const newProfile = await pool.query(
         "UPDATE users SET user_name = $1 WHERE user_id = $2 RETURNING *",
@@ -20,6 +20,7 @@ router.put("/", authorization, async (req, res) => {
       );
       res.json(newProfile.rows);
     } else {
+      //4. Name was same as original
       return res.status(400).json("Name was not changed!");
     }
   } catch (err) {
