@@ -1,10 +1,12 @@
 import React, { Fragment, useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Settings = ({ setAuth }) => {
   const [newName, setNewName] = useState("");
 
+  //To get the name from database
   const getName = async () => {
     try {
       const response = await fetch("http://localhost:5000/dashboard", {
@@ -20,6 +22,7 @@ const Settings = ({ setAuth }) => {
     }
   };
 
+  //To update name in the database to the specified name
   const updateName = async (e) => {
     e.preventDefault();
     try {
@@ -49,6 +52,12 @@ const Settings = ({ setAuth }) => {
     getName();
   }, []);
 
+  //For navigation back to dashboard
+  const navigate = useNavigate();
+  const navigateDashboard = () => {
+    navigate("/dashboard");
+  };
+
   return (
     <Fragment>
       <Navbar setAuth={setAuth} />
@@ -66,7 +75,7 @@ const Settings = ({ setAuth }) => {
             onChange={(e) => setNewName(e.target.value)}
           ></input>
         </div>
-        <button className="btn btn-success me-3" onClick={(e) => updateName(e)}>
+        <button className="btn btn-success me-3" onClick={(e) => {updateName(e); navigateDashboard()}}>
           Save Changes
         </button>
         <button className="btn btn-danger">
