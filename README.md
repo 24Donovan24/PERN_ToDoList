@@ -1,7 +1,6 @@
 # PERN-ToDoList
-This is a simple ToDo List application built using technology stacks PostgreSQL, Express, React.js and Node.js (PERN). Additional feature include a
-date column for users to track the deadlines of their todo. Authentication feature is also implemented using JWT to allow users to register/login for 
-a more personalised experience.
+This is a simple ToDo List application built using technology stacks PostgreSQL, Express, React.js and Node.js (PERN). Authentication feature is implemented using JWT and bcrypt to allow users to register/login for a more personalised experience. Additional features include a
+date column for users to track the deadlines of their todo and a settings page for users to ammend their personal information. 
 
 ## Setup
 
