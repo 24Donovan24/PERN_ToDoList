@@ -2,9 +2,8 @@ import React, { Fragment, useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import { toast } from "react-toastify";
 
-const Settings = ({setAuth}) => {
+const Settings = ({ setAuth }) => {
   const [newName, setNewName] = useState("");
-  const [nameChange, setNameChange] = useState(false);
 
   const getName = async () => {
     try {
@@ -37,7 +36,6 @@ const Settings = ({setAuth}) => {
       });
       const parseRes = await response.json();
       if (parseRes[0].user_name) {
-        setNameChange(true);
         toast.success("Name changed successfully!");
       } else {
         toast.error(parseRes);
@@ -49,8 +47,7 @@ const Settings = ({setAuth}) => {
 
   useEffect(() => {
     getName();
-    setNameChange(false);
-  }, [nameChange]);
+  }, []);
 
   return (
     <Fragment>
@@ -72,7 +69,7 @@ const Settings = ({setAuth}) => {
         <button className="btn btn-success me-3" onClick={(e) => updateName(e)}>
           Save Changes
         </button>
-        <button className="btn btn-danger" onClick={() => setNameChange(false)}>
+        <button className="btn btn-danger">
           Cancel
         </button>
       </form>
