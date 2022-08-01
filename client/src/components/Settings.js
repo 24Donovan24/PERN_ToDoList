@@ -56,8 +56,10 @@ const Settings = ({ setAuth }) => {
       const parseRes = await response.json();
       if (parseRes[0].user_name) {
         toast.success("Profile updated!");
+        navigateDashboard();
       } else {
         toast.error(parseRes);
+        navigateSettings();
       }
     } catch (err) {
       console.error(err.message);
@@ -68,10 +70,13 @@ const Settings = ({ setAuth }) => {
     getProfile();
   }, []);
 
-  //For navigation back to dashboard
+  //For navigation back to dashboard/settings
   const navigate = useNavigate();
   const navigateDashboard = () => {
     navigate("/dashboard");
+  };
+  const navigateSettings = () => {
+    navigate("/settings");
   };
 
   return (
@@ -127,7 +132,6 @@ const Settings = ({ setAuth }) => {
             className="btn btn-success me-3"
             onClick={(e) => {
               updateProfile(e);
-              navigateDashboard();
             }}
           >
             Save Changes
