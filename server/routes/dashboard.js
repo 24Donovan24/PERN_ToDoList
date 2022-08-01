@@ -9,7 +9,7 @@ router.get("/", authorization, async (req, res) => {
     // res.json(req.user); //wil display the user_id of the user (uuid)
 
     const user = await pool.query(
-      "SELECT users.user_name, todo.todo_id, todo.description, todo.date FROM users LEFT JOIN todo ON users.user_id = todo.user_id WHERE users.user_id = $1",
+      "SELECT users.user_name, users.user_email, todo.todo_id, todo.description, todo.date FROM users LEFT JOIN todo ON users.user_id = todo.user_id WHERE users.user_id = $1",
       [req.user.id]
     );
 
