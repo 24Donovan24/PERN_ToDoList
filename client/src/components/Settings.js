@@ -171,7 +171,7 @@ const Settings = ({ setAuth }) => {
             onChange={(e) => setNewPassword(e.target.value)}
           ></input>
           <button
-            className="btn btn-primary mb-4"
+            className="btn btn-secondary mb-4"
             type="button"
             onClick={togglePassword}
           >

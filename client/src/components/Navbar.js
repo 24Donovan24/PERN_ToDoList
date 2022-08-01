@@ -17,7 +17,7 @@ const Navbar = ({ setAuth }) => {
 
   return (
     <nav
-      className="navbar navbar-expand-lg navbar-light bg-secondary rounded"
+      className="navbar navbar-expand-lg navbar-light bg-dark rounded"
       style={{ fontSize: "1.2em" }}
     >
       <div className="container-fluid">
@@ -46,7 +46,7 @@ const Navbar = ({ setAuth }) => {
           <ul className="navbar-nav">
             <li className="nav-item">
               <button
-                className="nav-link btn btn-secondary"
+                className="nav-link btn btn-dark"
                 style={{ color: "white", borderRadius: "15px" }}
                 onClick={navigateSettings}
               >
@@ -55,7 +55,7 @@ const Navbar = ({ setAuth }) => {
             </li>
             <li className="nav-item">
               <button
-                className="nav-link btn btn-secondary"
+                className="nav-link btn btn-dark"
                 style={{ color: "white", borderRadius: "15px"}}
                 onClick={(e) => logout(e)}
               >
