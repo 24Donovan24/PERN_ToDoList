@@ -35,8 +35,8 @@ const Settings = ({ setAuth }) => {
     }
   };
 
-  //To update name in the database to the specified name
-  const updateName = async (e) => {
+  //To update profile in the database to the specified name
+  const updateProfile = async (e) => {
     e.preventDefault();
     try {
       const myHeaders = new Headers();
@@ -44,9 +44,9 @@ const Settings = ({ setAuth }) => {
       myHeaders.append("Content-Type", "application/json");
       myHeaders.append("token", localStorage.token);
 
-      const body = { newName };
+      const body = { newName, newEmail, newPassword };
       const response = await fetch(
-        "http://localhost:5000/settings/changename",
+        "http://localhost:5000/settings/changeprofile",
         {
           method: "PUT",
           headers: myHeaders,
@@ -54,70 +54,11 @@ const Settings = ({ setAuth }) => {
         }
       );
       const parseRes = await response.json();
-      // if (parseRes[0].user_name) {
-      //   toast.success("Name changed successfully!");
-      // } else {
-      //   toast.error(parseRes);
-      // }
-      toast.success("Profile updated!");
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
-
-  //To update email in the database to the specified email
-  const updateEmail = async (e) => {
-    e.preventDefault();
-    try {
-      const myHeaders = new Headers();
-
-      myHeaders.append("Content-Type", "application/json");
-      myHeaders.append("token", localStorage.token);
-
-      const body = { newEmail };
-      const response = await fetch(
-        "http://localhost:5000/settings/changeemail",
-        {
-          method: "PUT",
-          headers: myHeaders,
-          body: JSON.stringify(body),
-        }
-      );
-      const parseRes = await response.json();
-      // if (parseRes[0].user_email) {
-      //   toast.success("Email changed successfully!");
-      // } else {
-      //   toast.error(parseRes);
-      // }
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
-
-  //To update password in the database to the specified password
-  const updatePassword = async (e) => {
-    e.preventDefault();
-    try {
-      const myHeaders = new Headers();
-
-      myHeaders.append("Content-Type", "application/json");
-      myHeaders.append("token", localStorage.token);
-
-      const body = { newPassword };
-      const response = await fetch(
-        "http://localhost:5000/settings/changepassword",
-        {
-          method: "PUT",
-          headers: myHeaders,
-          body: JSON.stringify(body),
-        }
-      );
-      const parseRes = await response.json();
-      // if (parseRes[0].user_password) {
-      //   toast.success("Password changed successfully!");
-      // } else {
-      //   toast.error(parseRes);
-      // }
+      if (parseRes[0].user_name) {
+        toast.success("Profile updated!");
+      } else {
+        toast.error(parseRes);
+      }
     } catch (err) {
       console.error(err.message);
     }
@@ -137,8 +78,11 @@ const Settings = ({ setAuth }) => {
     <Fragment>
       <Navbar setAuth={setAuth} />
       <form>
-        <div className="mt-4">
-          <label className="form-label" style={{ fontSize: "18px" }}>
+        <label className="form-label mt-2 mb-4" style={{ fontSize: "18px" }}>
+          Account Information
+        </label>
+        <div>
+          <label className="form-label" style={{ fontSize: "16px" }}>
             Name
           </label>
           <input
@@ -149,7 +93,7 @@ const Settings = ({ setAuth }) => {
             className="form-control mb-4"
             onChange={(e) => setNewName(e.target.value)}
           ></input>
-          <label className="form-label" style={{ fontSize: "18px" }}>
+          <label className="form-label" style={{ fontSize: "16px" }}>
             Email
           </label>
           <input
@@ -160,7 +104,7 @@ const Settings = ({ setAuth }) => {
             className="form-control mb-4"
             onChange={(e) => setNewEmail(e.target.value)}
           ></input>
-          <label className="form-label" style={{ fontSize: "18px" }}>
+          <label className="form-label" style={{ fontSize: "16px" }}>
             Password
           </label>
           <input
@@ -182,9 +126,7 @@ const Settings = ({ setAuth }) => {
           <button
             className="btn btn-success me-3"
             onClick={(e) => {
-              updateName(e);
-              updateEmail(e);
-              updatePassword(e);
+              updateProfile(e);
               navigateDashboard();
             }}
           >
